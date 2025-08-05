@@ -1,9 +1,7 @@
-import Dashboard from "./dashboard/page";
-
 export default function Home() {
   return (
     <main>
-      <Dashboard />
+      <h1>Página Inicial</h1>
     </main>
   );
 }

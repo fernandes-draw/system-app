@@ -1,28 +1,27 @@
-"use client"
+"use client";
 
-import * as React from "react"
 import {
+  IconAssembly,
+  IconAutomation,
+  IconBlocks,
+  IconCalendarEvent,
   IconCamera,
-  IconChartBar,
   IconDashboard,
-  IconDatabase,
   IconFileAi,
   IconFileDescription,
-  IconFileWord,
-  IconFolder,
   IconHelp,
-  IconInnerShadowTop,
-  IconListDetails,
-  IconReport,
-  IconSearch,
+  IconMicroscope,
+  IconRectangularPrismPlus,
   IconSettings,
-  IconUsers,
-} from "@tabler/icons-react"
+  IconTruckDelivery,
+  IconUserDollar,
+} from "@tabler/icons-react";
+import * as React from "react";
 
-import { NavDocuments } from "@/components/nav-documents"
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavDocuments } from "@/components/nav-documents";
+import { NavMain } from "@/components/nav-main";
+import { NavSecondary } from "@/components/nav-secondary";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -31,39 +30,48 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import Link from "next/link";
+
+import Logo from "@/public/logo.png";
+import Image from "next/image";
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Everson",
+    email: "everson.dev.f@gmail.com",
+    avatar: "https://avatars.githubusercontent.com/u/17775284?v=4",
   },
   navMain: [
     {
-      title: "Dashboard",
-      url: "#",
+      title: "Painel Controle",
+      url: "/dashboard",
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
-      url: "#",
-      icon: IconListDetails,
+      title: "Produtos",
+      url: "/produtos",
+      icon: IconAssembly,
     },
     {
-      title: "Analytics",
-      url: "#",
-      icon: IconChartBar,
+      title: "Projetos",
+      url: "/projetos",
+      icon: IconRectangularPrismPlus,
     },
     {
-      title: "Projects",
-      url: "#",
-      icon: IconFolder,
+      title: "Clientes",
+      url: "/clientes",
+      icon: IconUserDollar,
     },
     {
-      title: "Team",
-      url: "#",
-      icon: IconUsers,
+      title: "Fornecedores",
+      url: "/fornecedores",
+      icon: IconTruckDelivery,
+    },
+    {
+      title: "Liga Metálica",
+      url: "/ligas",
+      icon: IconMicroscope,
     },
   ],
   navClouds: [
@@ -116,39 +124,34 @@ const data = {
   ],
   navSecondary: [
     {
-      title: "Settings",
-      url: "#",
+      title: "Configurações",
+      url: "/config",
       icon: IconSettings,
     },
     {
-      title: "Get Help",
-      url: "#",
+      title: "Ajuda?",
+      url: "/help",
       icon: IconHelp,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: IconSearch,
     },
   ],
   documents: [
     {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
+      name: "Pedido Blocos",
+      url: "/pedidos-blocos",
+      icon: IconBlocks,
     },
     {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
+      name: "Ordem de Produção (OP)",
+      url: "/ordem-producao",
+      icon: IconAutomation,
     },
     {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
+      name: "Agenda",
+      url: "/aagenda",
+      icon: IconCalendarEvent,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -160,10 +163,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
-              </a>
+              <Link href="/dashboard">
+                <Image
+                  src={Logo}
+                  alt="Logo Fundimar"
+                  className="size-8 bg-white/80 rounded-full p-1 border-1 border-orange-600"
+                />
+                <span className="text-2xl font-semibold">Fundimar</span>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -177,5 +184,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
